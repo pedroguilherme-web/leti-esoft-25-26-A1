@@ -40,5 +40,5 @@
 # debug information files
 *.dwo
 
-
+# Coisas que não queremos no nosso repositório
 .idea
