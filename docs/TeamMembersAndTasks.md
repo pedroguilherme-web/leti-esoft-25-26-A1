@@ -32,7 +32,7 @@ Finally, keep in mind that each User Story is not isolated — it must be integr
 | [Glossary](system-documentation/global-artifacts/glossary.md)                                      |   All    |    -     |    -     |    -     |
 | [Use Case Diagram (UCD)](system-documentation/global-artifacts/use-case-diagram.md)                |    -     |    -     |    -     |    -     |
 | [Supplementary Specification](system-documentation/global-artifacts/supplementary-specification.md) |   All    |    -     |    -     |    -     |
-| [Domain Model](system-documentation/global-artifacts/analysis.md)                                  |    -     |    -     |    -     |    -     |
+| [Domain Model](system-documentation/global-artifacts/analysis.md)                                  |    All    |    -     |    -     |    -     |
 | [US01](system-documentation/US01) (SDP Activities)                                                 |    -     | 1XXXXXX  |    -     |    -     |
 | [US02](system-documentation/US02) (SDP Activities)                                                 |    -     | 1XXXXXX  |    -     |    -     |
 | [US03](system-documentation/US03) (SDP Activities)                                                 |    -     | 1XXXXXX  |    -     |    -     |

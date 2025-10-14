@@ -21,6 +21,8 @@ _Specifies functionalities that:
 - System must track vaccination events
   - Including vaccine type, brand and lot number
 - Post-vaccination reactions must be recorded and accessible for analysis
+- System must only register the type of vaccine for the appointment <!-- Question 1 -->
+
 
 ## Usability 
 
@@ -75,6 +77,8 @@ configurability, installability, scalability and more._
     - Healthcare Centers and Community Vaccination Centers
   - Staff records
     - Nurses and Receptionists
+  - Which vaccines the patient is eligible for <!-- Question 2 -->
+  - The most prioritary pandemic <!-- Question 3 -->
 
 ### Scalability
 - System architecture must support scaling to handle pandemic-level vaccination campaigns across multiple centers

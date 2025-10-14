@@ -1,0 +1,126 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+hide circle
+top to bottom direction
+skinparam linetype ortho
+title Domain Model Diagram
+
+class Person {
+    # name : String
+    # birth_date : Date
+    # sex : String
+    # address : Address
+    # phone_number : int
+    # email : String
+    # cc_number : String
+}
+class NurseUser {
+    - nurse_id : int
+}
+class SNSUser {
+    - sns_number : int
+    - blood_type : String
+    - health_record : HealthRecord*
+}
+class ReceptionistUser {
+    - receptionist_id : int
+}
+class DGSAdminUser {
+    - admin_id : int
+    - priority_pandemic : Disease*
+}
+class Vaccine {
+    - name : String
+    - brand : String
+    - vaccine_id : String
+    - tech_used : String
+    - disease : String
+    - lot : String
+}
+class Appointment {
+    - patient : SNSUser*
+    - institution : Institution*
+    - date : AppointmentDate
+    - vaccine : Vaccine*
+    - state : int
+    - reaction : String
+}
+class Institution {
+    # address : Address
+    # name : String
+    # phone_number : int
+    # website : String
+    # opening_hours : OpeningHours
+    # max_vaccines_per_hour : int
+}
+class HealthCareCenter {
+    - treatment : List<Vaccine*>
+
+}
+class CommunityCenter {
+    - pandemic_treatment : Vaccine*
+}
+class Address {
+    - street : String
+    - door_number : String
+    - zip_code : String
+    - city : String
+}
+class Date {
+    # day  : int
+    # month : int
+    # year : int
+}
+class AppointmentDate {
+    - hour : int
+    - minute : int
+    - seconds : int
+}
+class Hours {
+    - hour : int
+    - minute : int
+    - seconds : int
+}
+class HealthRecord {
+    - patient : SNSUser*
+    - vaccine_record : List<Appointment*>
+}
+class OpeningHours {
+    - business_days_open : Hours
+    - business_days_closed : Hours
+    - saturday_open : Hours
+    - saturday_closed : Hours
+    - sunday_open : Hours
+    - sunday_closed : Hours
+}
+class Disease {
+    - name : String
+    - start : Date
+    - vaccine : Vaccine*
+}
+
+Person <|-- NurseUser
+Person <|-- SNSUser
+Person <|-- ReceptionistUser
+Person <|-- DGSAdminUser
+Person *-- Address
+Institution <|-- HealthCareCenter
+Institution <|-- CommunityCenter
+HealthCareCenter *-- Vaccine
+CommunityCenter *-- Vaccine
+HealthRecord *-- SNSUser
+HealthRecord *-- Appointment
+Institution *-- Address
+Institution *-- OpeningHours
+Date <|-- AppointmentDate
+SNSUser *-- HealthRecord
+DGSAdminUser *-- Disease
+Appointment *-- SNSUser
+Appointment *-- Institution
+Appointment *-- AppointmentDate
+Appointment *-- Vaccine
+Disease *-- Vaccine
+Hours *-- OpeningHours
+
+@enduml
