@@ -7,120 +7,119 @@ skinparam linetype ortho
 title Domain Model Diagram
 
 class Person {
-    # name : String
-    # birth_date : Date
-    # sex : String
-    # address : Address
-    # phone_number : int
-    # email : String
-    # cc_number : String
+    name : Text
+    birth_date : Date
+    sex : Text
+    'address : Address
+    phone_number : Integer
+    email : Text
+    cc_number : Text
 }
 class NurseUser {
-    - nurse_id : int
+    nurse_id : Integer
 }
 class SNSUser {
-    - sns_number : int
-    - blood_type : String
-    - health_record : HealthRecord*
+    sns_number : Integer
+    blood_type : Text
+    'health_record : HealthRecord*
 }
 class ReceptionistUser {
-    - receptionist_id : int
+    receptionist_id : Integer
 }
 class DGSAdminUser {
-    - admin_id : int
-    - priority_pandemic : Disease*
+    admin_id : Integer
+    'priority_pandemic : Disease*
 }
 class Vaccine {
-    - name : String
-    - brand : String
-    - vaccine_id : String
-    - tech_used : String
-    - disease : String
-    - lot : String
+    name : Text
+    brand : Text
+    vaccine_id : Text
+    tech_used : Text
+    disease : Text
+    lot : Text
 }
 class Appointment {
-    - patient : SNSUser*
-    - institution : Institution*
-    - date : AppointmentDate
-    - vaccine : Vaccine*
-    - state : int
-    - reaction : String
+    'patient : SNSUser*
+    'institution : Institution*
+    'date : AppointmentDate
+    'vaccine : Vaccine*
+    state : Integer
+    reaction : Text
 }
 class Institution {
-    # address : Address
-    # name : String
-    # phone_number : int
-    # website : String
-    # opening_hours : OpeningHours
-    # max_vaccines_per_hour : int
+    'address : Address
+    name : Text
+    phone_number : Integer
+    website : Text
+    'opening_hours : OpeningHours
+    max_vaccines_per_hour : Integer
 }
 class HealthCareCenter {
-    - treatment : List<Vaccine*>
+    'treatment : List<Vaccine*>
 
 }
 class CommunityCenter {
-    - pandemic_treatment : Vaccine*
+    'pandemic_treatment : Vaccine*
 }
 class Address {
-    - street : String
-    - door_number : String
-    - zip_code : String
-    - city : String
+    street : Text
+    door_number : Text
+    zip_code : Text
+    city : Text
 }
 class Date {
-    # day  : int
-    # month : int
-    # year : int
+    day  : Integer
+    month : Integer
+    year : Integer
 }
 class AppointmentDate {
-    - hour : int
-    - minute : int
-    - seconds : int
+    hour : Integer
+    minute : Integer
+    seconds : Integer
 }
 class Hours {
-    - hour : int
-    - minute : int
-    - seconds : int
+    hour : Integer
+    minute : Integer
+    seconds : Integer
 }
 class HealthRecord {
-    - patient : SNSUser*
-    - vaccine_record : List<Appointment*>
+    'patient : SNSUser*
+    'vaccine_record : List<Appointment*>
 }
 class OpeningHours {
-    - business_days_open : Hours
-    - business_days_closed : Hours
-    - saturday_open : Hours
-    - saturday_closed : Hours
-    - sunday_open : Hours
-    - sunday_closed : Hours
+    'business_days_open : Hours
+    'business_days_closed : Hours
+    'saturday_open : Hours
+    'saturday_closed : Hours
+    'sunday_open : Hours
+    'sunday_closed : Hours
 }
 class Disease {
-    - name : String
-    - start : Date
-    - vaccine : Vaccine*
+    name : Text
+    start : Date
+    'vaccine : Vaccine*
 }
 
 Person <|-- NurseUser
 Person <|-- SNSUser
 Person <|-- ReceptionistUser
 Person <|-- DGSAdminUser
-Person *-- Address
+Person "1" -- "1"  Address: resides in >
 Institution <|-- HealthCareCenter
 Institution <|-- CommunityCenter
-HealthCareCenter *-- Vaccine
-CommunityCenter *-- Vaccine
-HealthRecord *-- SNSUser
-HealthRecord *-- Appointment
-Institution *-- Address
-Institution *-- OpeningHours
+HealthCareCenter "1" -- "*" Vaccine: administers >
+CommunityCenter "1" -- "*" Vaccine: administers >
+SNSUser "1" -- "1" HealthRecord: possesses >
+HealthRecord "1" -- "*" Appointment: < has registered
+Institution "1" -- "1" Address: has? >
+Institution "1" -- "1..*" OpeningHours: operate in >
 Date <|-- AppointmentDate
-SNSUser *-- HealthRecord
-DGSAdminUser *-- Disease
-Appointment *-- SNSUser
-Appointment *-- Institution
-Appointment *-- AppointmentDate
-Appointment *-- Vaccine
-Disease *-- Vaccine
-Hours *-- OpeningHours
+DGSAdminUser "1" -- "1" Disease: indicates >
+Appointment "1" -- "1" SNSUser: < schedules
+Appointment "*" -- "1" Institution: < realizes?
+Appointment "1" -- "1" AppointmentDate: < is schedule on
+Appointment "1" -- "1" Vaccine: < is administrated during
+Disease "1" -- "*" Vaccine: < treats
+Hours "*" -- "1" OpeningHours: describes >
 
 @enduml
