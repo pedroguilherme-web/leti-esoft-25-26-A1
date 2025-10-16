@@ -101,22 +101,22 @@ class Disease {
 }
 
 Person <|-- NurseUser
-Person <|-- SNSUser
+Person <|---- SNSUser
 Person <|-- ReceptionistUser
 Person <|-- DGSAdminUser
-Person "1" -- "1"  Address: resides in >
+Person "1" - "1"  Address: resides in >
 Institution <|-- HealthCareCenter
 Institution <|-- CommunityCenter
-HealthCareCenter "1" -- "*" Vaccine: administers >
-CommunityCenter "1" -- "*" Vaccine: administers >
-SNSUser "1" -- "1" HealthRecord: possesses >
+HealthCareCenter "1" --- "*" Vaccine: administers >
+CommunityCenter "1" --- "*" Vaccine: administers >
+SNSUser "1" --- "1" HealthRecord: possesses >
 HealthRecord "1" -- "*" Appointment: < has registered
-Institution "1" -- "1" Address: has? >
+Institution "1" --- "1" Address: exists in >
 Institution "1" -- "1..*" OpeningHours: operate in >
 Date <|-- AppointmentDate
 DGSAdminUser "1" -- "1" Disease: indicates >
-Appointment "1" -- "1" SNSUser: < schedules
-Appointment "*" -- "1" Institution: < realizes?
+Appointment "1" --- "1" SNSUser: < schedules
+Appointment "*" -- "1" Institution: < effectuates
 Appointment "1" -- "1" AppointmentDate: < is schedule on
 Appointment "1" -- "1" Vaccine: < is administrated during
 Disease "1" -- "*" Vaccine: < treats
