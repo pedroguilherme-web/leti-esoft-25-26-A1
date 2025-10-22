@@ -3,14 +3,13 @@
 
 hide circle
 top to bottom direction
-skinparam linetype ortho
+'skinparam linetype ortho
 title Domain Model Diagram
 
 class Person {
     name : Text
     birth_date : Date
     sex : Text
-    'address : Address
     phone_number : Integer
     email : Text
     cc_number : Text
@@ -21,14 +20,12 @@ class NurseUser {
 class SNSUser {
     sns_number : Integer
     blood_type : Text
-    'health_record : HealthRecord*
 }
 class ReceptionistUser {
     receptionist_id : Integer
 }
 class DGSAdminUser {
     admin_id : Integer
-    'priority_pandemic : Disease*
 }
 class Vaccine {
     name : Text
@@ -39,27 +36,18 @@ class Vaccine {
     lot : Text
 }
 class Appointment {
-    'patient : SNSUser*
-    'institution : Institution*
-    'date : AppointmentDate
-    'vaccine : Vaccine*
     state : Integer
     reaction : Text
 }
 class Institution {
-    'address : Address
     name : Text
     phone_number : Integer
     website : Text
-    'opening_hours : OpeningHours
     max_vaccines_per_hour : Integer
 }
 class HealthCareCenter {
-    'treatment : List<Vaccine*>
-
 }
 class CommunityCenter {
-    'pandemic_treatment : Vaccine*
 }
 class Address {
     street : Text
@@ -83,43 +71,34 @@ class Hours {
     seconds : Integer
 }
 class HealthRecord {
-    'patient : SNSUser*
-    'vaccine_record : List<Appointment*>
 }
 class OpeningHours {
-    'business_days_open : Hours
-    'business_days_closed : Hours
-    'saturday_open : Hours
-    'saturday_closed : Hours
-    'sunday_open : Hours
-    'sunday_closed : Hours
 }
 class Disease {
     name : Text
     start : Date
-    'vaccine : Vaccine*
 }
 
 Person <|-- NurseUser
 Person <|---- SNSUser
 Person <|-- ReceptionistUser
 Person <|-- DGSAdminUser
-Person "1" - "1"  Address: resides in >
+Person "1    " - "1    "  Address: resides in >
 Institution <|-- HealthCareCenter
 Institution <|-- CommunityCenter
 HealthCareCenter "1" --- "*" Vaccine: administers >
-CommunityCenter "1" --- "*" Vaccine: administers >
-SNSUser "1" --- "1" HealthRecord: possesses >
-HealthRecord "1" -- "*" Appointment: < has registered
-Institution "1" --- "1" Address: exists in >
-Institution "1" -- "1..*" OpeningHours: operate in >
+CommunityCenter "1" --- "\n \n \n \n \n \n \n \n \n \n *      " Vaccine: administers >
+SNSUser "1 " --- "1  " HealthRecord: possesses >
+HealthRecord "1   " -- "* " Appointment: < has registered
+Institution "1        " --- "1 " Address: exists in >
+Institution "1" -- "1..*               " OpeningHours: "operate in >"
 Date <|-- AppointmentDate
-DGSAdminUser "1" -- "1" Disease: indicates >
-Appointment "1" --- "1" SNSUser: < schedules
-Appointment "*" -- "1" Institution: < effectuates
+DGSAdminUser "1" -- "\n \n \n \n 1" Disease: "\n indicates >"
+Appointment "1   " --- "1    " SNSUser: < schedules
+Appointment "* " -- "1  " Institution: < effectuates
 Appointment "1" -- "1" AppointmentDate: < is schedule on
-Appointment "1" -- "1" Vaccine: < is administrated during
+Appointment "1" -- "1  " Vaccine: < is administrated during
 Disease "1" -- "*" Vaccine: < treats
-Hours "*" -- "1" OpeningHours: describes >
+Hours "* " -- "1 " OpeningHours: "\n \n \ndescribes >"
 
 @enduml
