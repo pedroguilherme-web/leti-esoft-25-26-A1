@@ -1,0 +1,51 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+title Use Case Diagram
+left to right direction
+
+actor "Nurse" as N
+usecase "1. Issues and delivers vaccination certificates" as N1
+usecase "2. Visualize present patient's list" as N2
+usecase "3. Register the vaccination event" as N3
+usecase "4. Access to patients health record" as N4
+usecase "5. Register post-vaccination reactions" as N5
+
+N --> N1
+N --> N2
+N --> N3
+N --> N4
+N --> N5
+
+actor "Receptionist" as R
+usecase "1. Records the patient arrival" as R1
+usecase "2. Confirm the vaccination appointment" as R2
+usecase "3. Set the patient as ready" as R3
+usecase "4. Send the patient to a waiting room" as R4
+usecase "5. Schedule a vaccination appointment for a patient" as R5
+
+R --> R1
+R --> R2
+R --> R3
+R --> R4
+R --> R5
+
+actor "SNS User" as U
+usecase "1. Schedule vaccination appointments" as U1
+usecase "2. Obtain vaccination certificates" as U2
+
+U --> U1
+U --> U2
+
+actor "DGS Administrator" as Admin
+usecase "1. Configure vaccine's data" as A1
+usecase "2. Configure vaccination center's data" as A2
+usecase "3. Register vaccination centers" as A3
+usecase "4. Register staff information" as A4
+
+Admin --> A1
+Admin --> A2
+Admin --> A3
+Admin --> A4
+
+@enduml
