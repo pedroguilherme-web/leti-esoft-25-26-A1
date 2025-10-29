@@ -8,18 +8,17 @@ title Domain Model Diagram
 
 class Person {
     name : Text
-    birth_date : Date
-    sex : Text
     phone_number : Integer
     email : Text
-    cc_number : Text
 }
 class NurseUser {
     nurse_id : Integer
 }
 class SNSUser {
     sns_number : Integer
-    blood_type : Text
+    birth_date : Date
+    sex : Text
+    cc_number : Text
 }
 class ReceptionistUser {
     receptionist_id : Integer
@@ -30,14 +29,18 @@ class DGSAdminUser {
 class Vaccine {
     name : Text
     brand : Text
-    vaccine_id : Text
     tech_used : Text
-    disease : Text
     lot : Text
 }
 class Appointment {
     state : Integer
     reaction : Text
+}
+class StatusAppointment {
+    TO_BE_ATTENDED : Integer
+    ATTENDING : Integer
+    VACCINATED : Integer
+    LEAVING : Integer
 }
 class Institution {
     name : Text
@@ -55,20 +58,17 @@ class Address {
     zip_code : Text
     city : Text
 }
-class Date {
-    day  : Integer
-    month : Integer
-    year : Integer
-}
+
 class AppointmentDate {
+    year : Integer
+    month : Integer
+    day  : Integer
     hour : Integer
     minute : Integer
-    seconds : Integer
 }
 class Hours {
     hour : Integer
     minute : Integer
-    seconds : Integer
 }
 class HealthRecord {
 }
@@ -88,17 +88,17 @@ Institution <|-- HealthCareCenter
 Institution <|-- CommunityCenter
 HealthCareCenter "1" --- "*" Vaccine: administers >
 CommunityCenter "1" --- "\n \n \n \n \n \n \n \n \n \n *      " Vaccine: administers >
-SNSUser "1 " --- "1  " HealthRecord: possesses >
-HealthRecord "1   " -- "* " Appointment: < has registered
+SNSUser "1    " --- "1  " HealthRecord: possesses >
+HealthRecord "1   " -- "*" Appointment: < has registered
 Institution "1        " --- "1 " Address: exists in >
-Institution "1" -- "1..*               " OpeningHours: "operate in >"
-Date <|-- AppointmentDate
-DGSAdminUser "1" -- "\n \n \n \n 1" Disease: "\n indicates >"
-Appointment "1   " --- "1    " SNSUser: < schedules
-Appointment "* " -- "1  " Institution: < effectuates
-Appointment "1" -- "1" AppointmentDate: < is schedule on
+Institution "1" -- "1..*                 " OpeningHours: operate in >
+DGSAdminUser "1" -- "1   " Disease: "\n indicates >"
+Appointment "                            *" --- "1    " SNSUser: < schedules
+Appointment "*" -- "1" Institution: < effectuates
+Appointment "1   " -- "1" AppointmentDate: is schedule on >
 Appointment "1" -- "1  " Vaccine: < is administrated during
+Appointment "1..*   " -- "1 " StatusAppointment: is on a >
 Disease "1" -- "*" Vaccine: < treats
-Hours "* " -- "1 " OpeningHours: "\n \n \ndescribes >"
+Hours "2 " -- "1 " OpeningHours: "\n \n \ndescribes >"
 
 @enduml
