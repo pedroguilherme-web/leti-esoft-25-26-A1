@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+title Use Case Diagram
+left to right direction
+
+actor "DGS Administrator" as Admin
+usecase "1. Specify a new vaccine type" as ADM10
+usecase "2. Register a vaccine" as ADM11
+usecase "3. Register a employee" as ADM14
+usecase "4. Get a list of employees assigned to a specific role" as ADM15
+
+Admin --> ADM10
+Admin --> ADM11
+Admin --> ADM14
+Admin --> ADM15
+
+@enduml

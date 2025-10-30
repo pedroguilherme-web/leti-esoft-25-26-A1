@@ -2,11 +2,12 @@
 
 ## Functionality
 
-_Specifies functionalities that:  
-&nbsp; &nbsp; (i) are common across several US/UC;  
+_Specifies functionalities that:
+&nbsp; &nbsp; (i) are common across several US/UC;
 &nbsp; &nbsp; (ii) are not related to US/UC, namely: Audit, Reporting and Security._
 
 ### Security
+
 - User authentication must be role-based
   - SNS User
   - Nurse User
@@ -17,14 +18,14 @@ _Specifies functionalities that:
 - System must maintain audit logs of vaccination events and certificate issuance
 
 ### Reporting
+
 - System must be capable of generating vaccination certificates upon request
 - System must track vaccination events
   - Including vaccine type, brand and lot number
 - Post-vaccination reactions must be recorded and accessible for analysis
 - System must only register the type of vaccine for the appointment <!-- Question 1 -->
 
-
-## Usability 
+## Usability
 
 _Evaluates the user interface. It has several subcategories,
 among them: error prevention; interface aesthetics and design; help and
@@ -53,6 +54,7 @@ _Evaluates the performance requirements of the software, namely: response time, 
   - Regardless of load conditions
 - System must handle high user loads during peak periods
 - Performance must remain consistent across all supported data persistence platforms
+- The application will be deployed on machines with 8 GB of RAM
 
 ## Supportability
 
@@ -61,16 +63,19 @@ testability, adaptability, maintainability, compatibility,
 configurability, installability, scalability and more._
 
 ### Testability
+
 - All code must be tested using the Google Testing Framework (C++)
 - Unit tests must cover critical vaccination and appointment management functionality
 
 ### Adaptability
+
 - System must support multiple data persistence platforms
   - Relational databases
   - NoSQL databases
   - In-memory databases
 
 ### Configurability
+
 - DGS Administrators must be able to configure:
   - Vaccine types and related information
   - Vaccination center types
@@ -81,6 +86,7 @@ configurability, installability, scalability and more._
   - The most prioritary pandemic <!-- Question 3 -->
 
 ### Scalability
+
 - System architecture must support scaling to handle pandemic-level vaccination campaigns across multiple centers
 
 ## +
