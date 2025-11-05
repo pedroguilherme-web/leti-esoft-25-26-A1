@@ -1,7 +1,6 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-hide circle
 top to bottom direction
 'skinparam linetype ortho
 title Domain Model Diagram
@@ -36,7 +35,7 @@ class Appointment {
     state : Integer
     reaction : Text
 }
-class StatusAppointment {
+enum StatusAppointment {
     TO_BE_ATTENDED : Integer
     ATTENDING : Integer
     VACCINATED : Integer
@@ -83,7 +82,7 @@ Person <|-- NurseUser
 Person <|---- SNSUser
 Person <|-- ReceptionistUser
 Person <|-- DGSAdminUser
-Person "1    " - "1    "  Address: resides in >
+Person "1..*    " - "1    "  Address: resides in >
 Institution <|-- HealthCareCenter
 Institution <|-- CommunityCenter
 HealthCareCenter "1" --- "*" Vaccine: administers >

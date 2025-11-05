@@ -1,0 +1,42 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title US14's Class Diagram
+
+class Person {
+    # name : String
+    # phone_number : int
+    # email : String
+}
+class NurseUser {
+    - nurse_id : int
+}
+class ReceptionistUser {
+    - receptionist_id : int
+}
+class DGSAdminUser {
+    - admin_id : int
+}
+class Address {
+    - street : String
+    - door_number : String
+    - zip_code : String
+    - city : String
+}
+class NurseContainer {
+    - nurses : list<NurseUser>
+}
+class ReceptionistContainer {
+    - receptionists : list<ReceptionistUser>
+}
+
+
+Person <|-- NurseUser
+Person <|-- ReceptionistUser
+Person <|-- DGSAdminUser
+Person "1..*" -- "1"  Address: resides in >
+NurseUser "                 *" <-- "1 " NurseContainer: < stores the information of
+ReceptionistUser "         *" <-- "1  " ReceptionistContainer: stores the information of <
+
+
+@enduml
