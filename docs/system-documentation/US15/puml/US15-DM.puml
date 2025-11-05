@@ -1,0 +1,24 @@
+@startuml
+' US15 Domain Model Excerpt
+title US15 - Domain Model
+
+skinparam classAttributeIconSize 0
+
+class Person {
+  name : Text
+  phone_number : Integer
+  email : Text
+}
+
+class NurseUser {
+  nurse_id : Integer
+}
+
+class ReceptionistUser {
+  receptionist_id : Integer
+}
+
+Person <|-- NurseUser
+Person <|-- ReceptionistUser
+
+@enduml

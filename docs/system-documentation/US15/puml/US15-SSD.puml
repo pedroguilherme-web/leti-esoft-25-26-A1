@@ -1,7 +1,6 @@
 @startuml
 'https://plantuml.com/sequence-diagram
-
-title US15 System Sequence Diagram
+title US15 - Get Employee List by Role (SSD)
 
 autoactivate on
 autonumber
@@ -11,10 +10,10 @@ participant ":System" as System
 
 activate Admin
 
-Admin -> System: Requests for the employees list
-System --> Admin: Requests the employee's assigned role/function
+Admin -> System: Asks to get employee list by role/function
+System --> Admin: Shows list of available roles (e.g., Nurse, Receptionist)
 
-Admin -> System: Inputs the employee's assigned role/function
+Admin -> System: Selects the employee's assigned role/function
 System --> Admin: Returns the requested list
 
 @enduml
