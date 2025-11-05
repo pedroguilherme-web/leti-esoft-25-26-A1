@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+title   US11 - Sequence Diagram
+
+autonumber
+
+actor "Admnistrator" as Admin
+participant ":System" as System
+
+== Initialization ==
+
+Admin -> System: Requests to register a vaccine.
+System --> Admin: Requests for the vaccination data.
+
+Admin -> System: Submits vaccination data.
+
+== Repetition ==
+
+Alice -> Bob: Another authentication Request
+Alice <-- Bob: another authentication Response
+@enduml

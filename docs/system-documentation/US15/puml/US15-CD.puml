@@ -1,0 +1,41 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title US15 Class Diagram
+
+class DGSAdminUser {
+    - admin_id: int
+    + getEmployeesList()
+}
+
+class NurseContainer {
+    - nurses : list<NurseUser>
+}
+
+class ReceptionistContainer {
+    - receptionists : list<ReceptionistUser>
+}
+
+class Person {
+    # name: String
+    # phone_number: int
+    # email: String
+}
+
+class NurseUser {
+    - nurse_id: int
+}
+
+class ReceptionistUser {
+    - receptionist_id : int
+
+}
+
+NurseUser --|> Person
+ReceptionistUser --|> Person
+DGSAdminUser "1  " --> "1..*  " NurseUser : admins >
+DGSAdminUser "1" --> "1..*     " ReceptionistUser : admins >
+NurseContainer "              1" --> "*" NurseUser : stores the information of >
+ReceptionistContainer "1      " --> "*" ReceptionistUser : stores the information of >
+
+@enduml
