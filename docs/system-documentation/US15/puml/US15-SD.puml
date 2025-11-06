@@ -1,32 +1,29 @@
 @startuml
-'https://plantuml.com/sequence-diagram
-
-title Get Employee List by Role
-
-autoactivate on
-autonumber
+title US15 - Sequence Diagram
 
 actor "Admin" as Admin
-participant ":GetEmployeeListView" as System
-participant ":GetEmployeeListController" as Ctrl
-participant ":NurseContainer" as C1
-participant ":ReceptionistContainer" as C2
+participant ":GetEmployeeListView" as View
+participant ":GetEmployeeListController" as Controller
+participant ":NurseContainer" as NurseRepo
+participant ":ReceptionistContainer" as RecRepo
+
+autonumber
 
 activate Admin
+Admin -> View: Asks to get employee list by role/function
+View --> Admin: Shows List of Available roles (Nurse, Receptionist)
+Admin -> View: Selects the requested role
+View -> Controller: getEmployeeList(role)
 
-Admin -> System: Asks to get employee list by role/function
-System --> Admin: Shows List of Available roles (Nurse, Receptionist)
-Admin -> System: Selects the requested data
-
-System -> Ctrl: getEmployeeList(type)
-alt type is "Nurse"
-    Ctrl -> C1: getNurseList()
-    C1 --> Ctrl: list<NurseUser>
-else type is ":Receptionist"
-    Ctrl -> C2: getReceptionistList()
-    C2 --> Ctrl: list<ReceptionistUser>
+alt role is "Nurse"
+    Controller -> NurseRepo: getNurseList(receptionists)
+    NurseRepo --> Controller: list<NurseUser>
+else role is "Receptionist"
+    Controller -> RecRepo: getReceptionistList(nurses)
+    RecRepo --> Controller: list<ReceptionistUser>
 end
-Ctrl --> System: Returns the list
-System --> Admin: Returns the requested list
+
+Controller --> View: Returns list<EmployeeList>
+View --> Admin: Returns the requested list
 
 @enduml
