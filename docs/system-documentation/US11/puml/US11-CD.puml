@@ -1,27 +1,31 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+title US11 Class Diagram
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
+class DGSAdminUser {
+    - admin_id: int
+ }
 
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+class Person {
+    # name: String
+    # phone_number: int
+    # email: String
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+class Vaccine {
+   - name : String
+   - brand : String
+   - tech_used : String
+   - lot : String
+   - disease : String
+   --
+   + createVaccine(): Vaccine
 }
+
+
+Person <|-- DGSAdminUser
+DGSAdminUser --> Vaccine : registers >
+
 
 @enduml

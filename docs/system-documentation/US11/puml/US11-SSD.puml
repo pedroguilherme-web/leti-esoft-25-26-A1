@@ -15,6 +15,5 @@ Admin -> System: Requests to register a vaccine.
 System --> Admin: Requests for the vaccination data.
 
 Admin -> System: Submits vaccination data.
-Admin <-- System: Registrition of the vaccine
-
+Admin <-- System: Confirms vaccine registrition
 @enduml
