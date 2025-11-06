@@ -5,15 +5,17 @@ title US15 Class Diagram
 
 class DGSAdminUser {
     - admin_id: int
-    + getEmployeesList()
+    + getEmployeesList(int type)
 }
 
 class NurseContainer {
-    - nurses : list<NurseUser>
+    - nurses : list<NurseUser*>
+    + getNurseList(nurses)
 }
 
 class ReceptionistContainer {
-    - receptionists : list<ReceptionistUser>
+    - receptionists : list<ReceptionistUser*>
+    + getReceptionistList(receptionists)
 }
 
 class Person {
@@ -33,9 +35,11 @@ class ReceptionistUser {
 
 NurseUser --|> Person
 ReceptionistUser --|> Person
-DGSAdminUser "1  " --> "1..*  " NurseUser : admins >
-DGSAdminUser "1" --> "1..*     " ReceptionistUser : admins >
-NurseContainer "              1" --> "*" NurseUser : stores the information of >
+DGSAdminUser --|> Person
+DGSAdminUser "1  " --> "1..*    " NurseUser : admins >
+DGSAdminUser "1" --> "1..* " ReceptionistUser : admins >
+NurseContainer "1    " --> "*" NurseUser : stores the information of >
 ReceptionistContainer "1      " --> "*" ReceptionistUser : stores the information of >
+
 
 @enduml
