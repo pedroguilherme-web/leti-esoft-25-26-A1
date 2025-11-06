@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autoactivate on
+autonumber
+
+title US14's System Sequence Diagram
+
+actor "Administrator" as A
+participant ":System" as S
+
+activate A
+
+A -> S: Asks to register an employee
+S --> A: Shows the required input fields
+A -> S: Inputs the necessary information
+S --> A: Confirms the employee registration
+@enduml

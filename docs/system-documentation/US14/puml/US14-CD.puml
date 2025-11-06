@@ -7,21 +7,37 @@ class Person {
     # name : String
     # phone_number : int
     # email : String
+    # address : Address
+    ---
+    + setName(String name) : void
+    + setPhoneNumber(String phone_number) : void
+    + setEmail(String email) : void
 }
-class NurseUser {
+class NurseUser extends Person {
     - nurse_id : int
+    ---
+    + setNurseID(int nurse_id) : void
 }
-class ReceptionistUser {
+class ReceptionistUser extends Person {
     - receptionist_id : int
+    ---
+    + setReceptionistID(int receptionist_id) : void
 }
-class DGSAdminUser {
+class DGSAdminUser extends Person {
     - admin_id : int
+    ---
+    + setAdminID(int admin_id) : void
 }
 class Address {
     - street : String
     - door_number : String
     - zip_code : String
     - city : String
+    ---
+    + setStreet(String street) : void
+    + setDoorNumber(String door_number) : void
+    + setZipCode(String zip_code) : void
+    + setCity(String city) : void
 }
 class NurseContainer {
     - nurses : list<NurseUser>
@@ -30,10 +46,6 @@ class ReceptionistContainer {
     - receptionists : list<ReceptionistUser>
 }
 
-
-Person <|-- NurseUser
-Person <|-- ReceptionistUser
-Person <|-- DGSAdminUser
 Person "1..*" -- "1"  Address: resides in >
 NurseUser "                 *" <-- "1 " NurseContainer: < stores the information of
 ReceptionistUser "         *" <-- "1  " ReceptionistContainer: stores the information of <
