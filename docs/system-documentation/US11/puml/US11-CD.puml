@@ -27,5 +27,4 @@ class Vaccine {
 Person <|-- DGSAdminUser
 DGSAdminUser --> Vaccine : registers >
 
-
 @enduml
