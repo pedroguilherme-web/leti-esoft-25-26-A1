@@ -19,8 +19,6 @@ alt Valid Data
     Vaccine --> System: Returns new Vaccine object
 
     System --> Admin: Displays confirmation message: "Vaccine registered successfully!"
-else Invalid Data
-    System --> Admin: Displays error message
 end
 
 @enduml
