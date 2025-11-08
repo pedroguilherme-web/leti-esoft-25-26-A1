@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+hide circle
+hide methods
+
+title US14's Domain Model
+
+class Person {
+    # name : Text
+    # phone_number : Integer
+    # email : Text
+    # address : Address
+}
+class NurseUser extends Person {
+    - nurse_id : Integer
+}
+class ReceptionistUser extends Person {
+    - receptionist_id : Integer
+}
+class DGSAdminUser extends Person {
+    - admin_id : Integer
+}
+class Address {
+    - street : Text
+    - door_number : Text
+    - zip_code : Text
+    - city : Text
+}
+
+Person "1..*" -- "1"  Address: resides in >
+NurseUser "                 *" <-- "1 " NurseContainer: < stores the information of
+ReceptionistUser "         *" <-- "1  " ReceptionistContainer: stores the information of <
+
+
+@enduml
