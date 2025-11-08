@@ -23,7 +23,7 @@ class Vaccine {
 
 class VaccineRegistration {
     registrationDate: DateTime
-    status: Enumeration (Active, Obsolete)
+    status: String
 }
 
 Person <|-- DGSAdministrator
