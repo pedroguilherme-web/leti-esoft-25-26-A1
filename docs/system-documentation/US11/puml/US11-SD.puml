@@ -2,21 +2,23 @@
 'https://plantuml.com/sequence-diagram
 
 title   US11 - Sequence Diagram
-
 autonumber
 
-actor "Admnistrator" as Admin
+actor "DGS Administrator" as Admin
 participant ":System" as System
+participant ":Vaccine" as Vaccine
 
-== Initialization ==
+Admin -> System: Requests to register a new vaccine
+System --> Admin: Displays the vaccine registration form
 
-Admin -> System: Requests to register a vaccine.
-System --> Admin: Requests for the vaccination data.
+Admin -> System: Submits new vaccine details
 
-Admin -> System: Submits vaccination data.
 
-== Repetition ==
+alt Valid Data
+    System -> Vaccine: Create Vaccine
+    Vaccine --> System: Returns new Vaccine object
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+    System --> Admin: Displays confirmation message: "Vaccine registered successfully!"
+end
+
 @enduml

@@ -3,43 +3,44 @@
 
 title US15 Class Diagram
 
-class DGSAdminUser {
-    - admin_id: int
-    + getEmployeesList(int type)
+class GetEmployeeListView {
+}
+
+class GetEmployeeListController {
+  + getEmployeeList(role) : List<EmployeeList>
 }
 
 class NurseContainer {
-    - nurses : list<NurseUser*>
-    + getNurseList(nurses)
+ - nurses : List<NurseUser>
+ + getNurseList() : List<NurseUser>
 }
 
 class ReceptionistContainer {
-    - receptionists : list<ReceptionistUser*>
-    + getReceptionistList(receptionists)
+ receptionists : List<ReceptionistUser>
+ + getReceptionistList(receptionists)
 }
 
 class Person {
-    # name: String
-    # phone_number: int
-    # email: String
-}
-
-class NurseUser {
-    - nurse_id: int
+  # name: String
+  # phone_number: int
+  # email: String
 }
 
 class ReceptionistUser {
-    - receptionist_id : int
-
+  - receptionist_id : int
 }
 
-NurseUser --|> Person
-ReceptionistUser --|> Person
-DGSAdminUser --|> Person
-DGSAdminUser "1  " --> "1..*    " NurseUser : admins >
-DGSAdminUser "1" --> "1..* " ReceptionistUser : admins >
-NurseContainer "1    " --> "*" NurseUser : stores the information of >
-ReceptionistContainer "1      " --> "*" ReceptionistUser : stores the information of >
+class NurseUser {
+  - nurse_id: int
+}
 
+GetEmployeeListView ..> GetEmployeeListController : "uses >"
+GetEmployeeListController ..> NurseContainer : "uses >"
+GetEmployeeListController ..> ReceptionistContainer : "uses >"
+GetEmployeeListController ..> EmployeeList : "creates >"
+NurseContainer "    1" -- "0..*        " NurseUser : "stores the information of >"
+ReceptionistContainer "1" -- "0..*" ReceptionistUser : "stores the information of >"
+Person <|-- ReceptionistUser
+Person <|-- NurseUser
 
 @enduml
