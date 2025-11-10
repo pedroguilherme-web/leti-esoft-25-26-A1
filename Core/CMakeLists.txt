@@ -7,4 +7,10 @@ add_library(Core headers/domain/shared/Result.h headers/domain/shared/StringUtil
         headers/domain/shared/ReceptionistUser.h
         headers/domain/shared/DGSAdminUser.h
         headers/domain/shared/NurseContainer.h
-        headers/domain/shared/ReceptionistContainer.h)
+        headers/domain/shared/ReceptionistContainer.h
+        sources/domain/shared/Address.cpp
+        sources/domain/shared/DGSAdminUser.cpp
+        sources/domain/shared/NurseUser.cpp
+        sources/domain/shared/ReceptionistUser.cpp
+        sources/domain/shared/Person.cpp
+)

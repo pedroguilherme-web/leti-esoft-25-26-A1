@@ -13,7 +13,7 @@ public:
     DGSAdminUser();
     DGSAdminUser(int admin_id);
     int getAdminID();
-    int setAdminID(int admin_id);
+    void setAdminID(int admin_id);
 };
 
 #endif //DGSADMINUSER_H

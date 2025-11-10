@@ -15,7 +15,7 @@ protected:
     string name;
     int phone_number;
     string email;
-    Address adress;
+    Address address;
 
 public:
     Person();
