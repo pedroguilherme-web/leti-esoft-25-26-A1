@@ -16,14 +16,14 @@ Admin -> View: Selects the requested role
 View -> Controller: getEmployeeList(role)
 
 alt role is "Nurse"
-    Controller -> NurseRepo: getNurseList(receptionists)
+    Controller -> NurseRepo: getNurseList()
     NurseRepo --> Controller: list<NurseUser>
 else role is "Receptionist"
-    Controller -> RecRepo: getReceptionistList(nurses)
+    Controller -> RecRepo: getReceptionistList()
     RecRepo --> Controller: list<ReceptionistUser>
 end
 
-Controller --> View: Returns list<EmployeeList>
+Controller --> View: Returns the list
 View --> Admin: Returns the requested list
 
 @enduml

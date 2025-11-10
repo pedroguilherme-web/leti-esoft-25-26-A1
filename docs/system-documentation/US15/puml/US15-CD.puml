@@ -16,7 +16,7 @@ class NurseContainer {
 }
 
 class ReceptionistContainer {
- receptionists : List<ReceptionistUser>
+ - receptionists : List<ReceptionistUser>
  + getReceptionistList(receptionists)
 }
 
@@ -26,21 +26,22 @@ class Person {
   # email: String
 }
 
-class ReceptionistUser {
+class ReceptionistUser extends Person {
   - receptionist_id : int
 }
 
-class NurseUser {
+class NurseUser extends Person{
   - nurse_id: int
+}
+
+class DGSAdminUser extends Person {
+    - admin_id : int
 }
 
 GetEmployeeListView ..> GetEmployeeListController : "uses >"
 GetEmployeeListController ..> NurseContainer : "uses >"
 GetEmployeeListController ..> ReceptionistContainer : "uses >"
-GetEmployeeListController ..> EmployeeList : "creates >"
 NurseContainer "    1" -- "0..*        " NurseUser : "stores the information of >"
-ReceptionistContainer "1" -- "0..*" ReceptionistUser : "stores the information of >"
-Person <|-- ReceptionistUser
-Person <|-- NurseUser
+ReceptionistContainer "1   " -- "0..*" ReceptionistUser : "stores the information of >"
 
 @enduml

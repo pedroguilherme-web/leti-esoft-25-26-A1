@@ -10,15 +10,16 @@ class Person {
   email : Text
 }
 
-class NurseUser {
+class NurseUser extends Person {
   nurse_id : Integer
 }
 
-class ReceptionistUser {
+class ReceptionistUser extends Person{
   receptionist_id : Integer
 }
 
-Person <|-- NurseUser
-Person <|-- ReceptionistUser
+class DGSAdminUser extends Person{
+  admin_id : Integer
+}
 
 @enduml

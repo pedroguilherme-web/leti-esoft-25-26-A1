@@ -5,4 +5,6 @@ add_library(Core headers/domain/shared/Result.h headers/domain/shared/StringUtil
         headers/domain/shared/Person.h
         headers/domain/shared/Address.h
         headers/domain/shared/ReceptionistUser.h
-        headers/domain/shared/DGSAdminUser.h)
+        headers/domain/shared/DGSAdminUser.h
+        headers/domain/shared/NurseContainer.h
+        headers/domain/shared/ReceptionistContainer.h)
