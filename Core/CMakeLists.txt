@@ -13,4 +13,6 @@ add_library(Core headers/domain/shared/Result.h headers/domain/shared/StringUtil
         sources/domain/shared/NurseUser.cpp
         sources/domain/shared/ReceptionistUser.cpp
         sources/domain/shared/Person.cpp
+        sources/domain/shared/NurseContainer.cpp
+        sources/domain/shared/ReceptionistContainer.cpp
 )

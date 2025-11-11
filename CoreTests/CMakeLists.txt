@@ -6,7 +6,9 @@ add_executable(CoreTests domain/shared/StringUtilsTests.cpp
         domain/shared/PersonTests.cpp
         domain/shared/DGSAdminUserTests.cpp
         domain/shared/NurseUserTests.cpp
-        domain/shared/ReceptionistUserTests.cpp)
+        domain/shared/ReceptionistUserTests.cpp
+        domain/shared/NurseContainerTests.cpp
+        domain/shared/ReceptionistContainerTests.cpp)
 
 target_link_libraries(CoreTests Core)
 target_link_libraries(CoreTests gtest gtest_main)
