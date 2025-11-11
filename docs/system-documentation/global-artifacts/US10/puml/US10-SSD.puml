@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+title   US10 - System Sequence Diagram
+
+autoactivate on
+autonumber
+
+actor "Administrator" as Admin
+participant ":System" as System
+
+activate Admin
+
+Admin -> System: Requests to register a new vaccine type.
+System --> Admin: Requests for the vaccination description and name.
+
+Admin -> System: Submits vaccine data.
+Admin <-- System: Confirms vaccine registrition
+@enduml

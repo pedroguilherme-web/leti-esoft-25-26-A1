@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+title US10's Class Diagram
+
+
+class DGSAdminUser {
+    - admin_id: int
+    --
+    + specifyNewVaccineType(): Vaccine
+}
+
+class Person {
+    # name: String
+    # phone_number: int
+    # email: String
+
+}
+
+class VaccineType {
+   - name : String
+   - disease : String
+   - description : String
+}
+
+DGSAdminUser --> VaccineType     : specifies >
+Person <|-- DGSAdminUser
+
+
+@enduml

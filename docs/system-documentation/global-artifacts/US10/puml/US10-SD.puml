@@ -1,0 +1,24 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+title   US10 - Sequence Diagram
+autonumber
+
+actor "DGS Administrator" as Admin
+participant ":System" as System
+participant ":Vaccine type" as Vaccine
+
+Admin -> System: Requests to register a new vaccine type
+System --> Admin: Displays a form to specifie new vaccine type
+
+Admin -> System: Submits new vaccine type description
+
+
+alt Valid Data
+    System -> Vaccine: Create Vaccine type
+    Vaccine --> System: Returns new Vaccine object
+
+    System --> Admin: Displays confirmation message: "Vaccine type registered successfully!"
+end
+
+@enduml

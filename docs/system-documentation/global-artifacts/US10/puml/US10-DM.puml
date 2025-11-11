@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+title US10 - Domain Model
+
+class Person {
+    name: String
+    phone_number: int
+    email: String
+}
+
+class DGSAdminUser {
+    - admin_id: int
+}
+
+class VaccineType {
+   - name : String
+   - disease : String
+   - description : String
+}
+
+
+Person <|-- DGSAdminUser
+DGSAdminUser"1" -- "1..*" VaccineType : describes
+
+
+@enduml
