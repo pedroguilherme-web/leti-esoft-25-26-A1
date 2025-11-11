@@ -6,7 +6,7 @@
 #define DGSADMINUSER_H
 #include "Person.h"
 
-class DGSAdminUser : Person {
+class DGSAdminUser : public Person {
 private:
     int admin_id;
 public:
@@ -14,6 +14,7 @@ public:
     DGSAdminUser(int admin_id);
     int getAdminID();
     void setAdminID(int admin_id);
+
 };
 
 #endif //DGSADMINUSER_H

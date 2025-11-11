@@ -45,3 +45,10 @@ string Address::getCity() {
 void Address::setCity(string city) {
     this->city = city;
 }
+
+bool Address::operator==(const Address &address) const {
+    return this->street == address.street &&
+            this->door_number == address.door_number &&
+            this->zip_code == address.zip_code &&
+            this->city == address.city;
+}
