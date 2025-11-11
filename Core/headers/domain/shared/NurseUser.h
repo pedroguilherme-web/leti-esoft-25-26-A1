@@ -6,7 +6,7 @@
 #define NURSEUSER_H
 #include "Person.h"
 
-class NurseUser : Person{
+class NurseUser : public Person {
 private:
     int nurse_id;
 public:

@@ -25,6 +25,8 @@ public:
     void setZipCode(string zip_code);
     string getCity();
     void setCity(string city);
+
+    bool operator==(const Address &address) const;
 };
 
 #endif //ADDRESS_H
