@@ -1,13 +1,13 @@
 @startuml
 title US15 - Sequence Diagram
 
+autoactivate on
+autonumber
+
 actor "Admin" as Admin
 participant ":GetEmployeeListView" as View
 participant ":GetEmployeeListController" as Controller
-participant ":NurseContainer" as NurseRepo
-participant ":ReceptionistContainer" as RecRepo
-
-autonumber
+participant ":EmployeeContainer" as EmploRepo
 
 activate Admin
 Admin -> View: Asks to get employee list by role/function
@@ -15,12 +15,12 @@ View --> Admin: Shows List of Available roles (Nurse, Receptionist)
 Admin -> View: Selects the requested role
 View -> Controller: getEmployeeList(role)
 
-alt role is "Nurse"
-    Controller -> NurseRepo: getNurseList()
-    NurseRepo --> Controller: list<NurseUser>
-else role is "Receptionist"
-    Controller -> RecRepo: getReceptionistList()
-    RecRepo --> Controller: list<ReceptionistUser>
+alt role is 0
+    Controller -> EmploRepo: getNurseList()
+    EmploRepo --> Controller: list<NurseUser>
+else role is 1
+    Controller -> EmploRepo: getReceptionistList()
+    EmploRepo --> Controller: list<ReceptionistUser>
 end
 
 Controller --> View: Returns the list

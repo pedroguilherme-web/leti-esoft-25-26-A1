@@ -6,7 +6,7 @@
 #define NURSECONTAINER_H
 
 #include <list>
-#include "../shared/NurseUser.h"
+#include "headers/domain/model/NurseUser.h"
 using namespace std;
 
 class NurseContainer {
@@ -16,6 +16,9 @@ private:
 public:
     NurseContainer();
     std::list<NurseUser> getNurseList();
+
+    void addNurse(NurseUser nurse);
 };
 
 #endif NURSECONTAINER_H
+

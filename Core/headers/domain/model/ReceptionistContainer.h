@@ -6,7 +6,7 @@
 #define RECEPTIONISTCONTAINER_H
 
 #include <list>
-#include "../shared/ReceptionistUser.h"
+#include "headers/domain/model/ReceptionistUser.h"
 using namespace std;
 
 class ReceptionistContainer {
@@ -16,6 +16,8 @@ private:
 public:
     ReceptionistContainer();
     std::list<ReceptionistUser> getReceptionistList();
+
+    void addReceptionist(ReceptionistUser receptionist);
 };
 
 #endif RECEPTIONISTCONTAINER_H
