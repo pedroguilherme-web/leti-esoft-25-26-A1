@@ -6,7 +6,7 @@
 #define NURSECONTAINER_H
 
 #include <list>
-#include "NurseUser.h"
+#include "../shared/NurseUser.h"
 using namespace std;
 
 class NurseContainer {

@@ -6,7 +6,7 @@
 #define RECEPTIONISTCONTAINER_H
 
 #include <list>
-#include "ReceptionistUser.h"
+#include "../shared/ReceptionistUser.h"
 using namespace std;
 
 class ReceptionistContainer {

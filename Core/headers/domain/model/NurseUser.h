@@ -4,7 +4,7 @@
 
 #ifndef NURSEUSER_H
 #define NURSEUSER_H
-#include "Person.h"
+#include "../shared/Person.h"
 
 class NurseUser : public Person {
 private:

@@ -4,7 +4,7 @@
 
 #ifndef DGSADMINUSER_H
 #define DGSADMINUSER_H
-#include "Person.h"
+#include "../shared/Person.h"
 
 class DGSAdminUser : public Person {
 private:

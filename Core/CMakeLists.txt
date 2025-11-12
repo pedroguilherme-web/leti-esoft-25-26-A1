@@ -1,18 +1,18 @@
 project(Core)
 
-add_library(Core headers/domain/shared/Result.h headers/domain/shared/StringUtils.h sources/domain/shared/Result.cpp sources/domain/shared/StringUtils.cpp
-        headers/domain/shared/NurseUser.h
-        headers/domain/shared/Person.h
-        headers/domain/shared/Address.h
-        headers/domain/shared/ReceptionistUser.h
-        headers/domain/shared/DGSAdminUser.h
-        headers/domain/shared/NurseContainer.h
-        headers/domain/shared/ReceptionistContainer.h
-        sources/domain/shared/Address.cpp
-        sources/domain/shared/DGSAdminUser.cpp
-        sources/domain/shared/NurseUser.cpp
-        sources/domain/shared/ReceptionistUser.cpp
-        sources/domain/shared/Person.cpp
-        sources/domain/shared/NurseContainer.cpp
-        sources/domain/shared/ReceptionistContainer.cpp
+add_library(Core
+        headers/domain/model/NurseUser.h
+        headers/domain/model/Person.h
+        headers/domain/model/Address.h
+        headers/domain/model/ReceptionistUser.h
+        headers/domain/model/DGSAdminUser.h
+        headers/domain/model/NurseContainer.h
+        headers/domain/model/ReceptionistContainer.h
+        sources/domain/model/Address.cpp
+        sources/domain/model/DGSAdminUser.cpp
+        sources/domain/model/NurseUser.cpp
+        sources/domain/model/ReceptionistUser.cpp
+        sources/domain/model/Person.cpp
+        sources/domain/model/NurseContainer.cpp
+        sources/domain/model/ReceptionistContainer.cpp
 )
