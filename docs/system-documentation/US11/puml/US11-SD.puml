@@ -1,24 +1,35 @@
 @startuml
-'https://plantuml.com/sequence-diagram
-
-title   US11 - Sequence Diagram
+title US11 - Sequence Diagram: Register a Vaccine
 autonumber
 
 actor "DGS Administrator" as Admin
-participant ":System" as System
-participant ":Vaccine" as Vaccine
-
-Admin -> System: Requests to register a new vaccine
-System --> Admin: Displays the vaccine registration form
-
-Admin -> System: Submits new vaccine details
+participant ":VaccineRegistrationView" as View
+participant ":VaccineController" as Controller
+participant ":VaccineContainer" as Container
+participant "Vaccine" as Vaccine
 
 
-alt Valid Data
-    System -> Vaccine: Create Vaccine
-    Vaccine --> System: Returns new Vaccine object
+Admin -> View: Request to register new vaccine
+View --> Admin: Display registration form
 
-    System --> Admin: Displays confirmation message: "Vaccine registered successfully!"
+Admin -> View: Enter vaccine details
+View -> Controller: registerVaccine
+
+Controller -> Container: registerNewVaccine
+
+
+Container -> Container: validatevaccinefields
+
+alt Vaccine is valid
+    Container -> Vaccine: CreateVaccine
+    Container -> Container: AddVaccineToRepository
+    Container --> Controller: Success message
+else Vaccine is invalid
+    Container --> Controller: Error message ("Invalid vaccine")
 end
+
+Controller --> View: Return result
+
+View -> Admin: Show confirmation or error message
 
 @enduml

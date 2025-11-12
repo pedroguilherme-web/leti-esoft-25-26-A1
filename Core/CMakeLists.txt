@@ -15,4 +15,6 @@ add_library(Core
         sources/domain/model/Person.cpp
         sources/domain/model/NurseContainer.cpp
         sources/domain/model/ReceptionistContainer.cpp
+        headers/domain/model/Vaccine.h
+        sources/domain/model/Vaccine.cpp
 )
