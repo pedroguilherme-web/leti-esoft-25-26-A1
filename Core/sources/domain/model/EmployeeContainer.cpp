@@ -8,26 +8,26 @@ EmployeeContainer::EmployeeContainer() {
     this->employees = {};
 }
 
-list<Employee> EmployeeContainer::getEmployeeList() {
+list<Employee*> EmployeeContainer::getEmployeeList() {
     return this->employees;
 }
 
-list<Employee> EmployeeContainer::getNurseList() {
-    list<Employee> nurses;
+list<Employee*> EmployeeContainer::getNurseList() {
+    list<Employee*> nurses;
 
-    for (Employee employee : this->employees) {
-         if (employee.getType() == NURSE) {
+    for (Employee *employee : this->employees) {
+         if (employee->getType() == NURSE) {
             nurses.push_back(employee);
         }
     }
     return nurses;
 }
 
-list<Employee> EmployeeContainer::getReceptionistList() {
-    list<Employee> receptionists;
+list<Employee*> EmployeeContainer::getReceptionistList() {
+    list<Employee*> receptionists;
 
-    for (Employee employee : this->employees) {
-        if (employee.getType() == RECEPTIONIST) {
+    for (Employee *employee : this->employees) {
+        if (employee->getType() == RECEPTIONIST) {
             receptionists.push_back(employee);
         }
     }
@@ -35,5 +35,5 @@ list<Employee> EmployeeContainer::getReceptionistList() {
 }
 
 void EmployeeContainer::addEmployee(Employee employee) {
-    this->employees.push_back(employee);
+    this->employees.push_back(&employee);
 }

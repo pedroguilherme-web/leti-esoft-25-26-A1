@@ -12,13 +12,13 @@ using namespace std;
 
 class EmployeeContainer {
 private:
-    list<Employee> employees;
+    list<Employee*> employees;
 
 public:
     EmployeeContainer();
-    list<Employee> getEmployeeList();
-    list<Employee> getNurseList();
-    list<Employee> getReceptionistList();
+    list<Employee*> getEmployeeList();
+    list<Employee*> getNurseList();
+    list<Employee*> getReceptionistList();
     void addEmployee(Employee employee);
 };
 
