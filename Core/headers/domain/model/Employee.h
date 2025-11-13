@@ -10,16 +10,28 @@
 
 using namespace std;
 
-class Person {
+enum EmployeeType {
+    NURSE = 0,
+    RECEPTIONIST = 1,
+    ADMIN = 2,
+};
+
+class Employee {
 protected:
+    EmployeeType type;
+    static int employee_id;
     string name;
     int phone_number;
     string email;
     Address address;
 
 public:
-    Person();
-    Person(string name, int phone_number, string email, Address address);
+    Employee();
+    Employee(EmployeeType type, string name, int phone_number, string email, Address address);
+    int getType() const;
+    void setType(EmployeeType type);
+    int getID() const;
+    void setID(int id);
     string getName();
     void setName(string name);
     int getPhoneNumber();

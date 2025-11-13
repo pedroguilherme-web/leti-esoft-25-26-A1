@@ -5,26 +5,28 @@ top to bottom direction
 'skinparam linetype ortho
 title Domain Model Diagram
 
-class Person {
+enum EmployeeType {
+    NURSE : Integer
+    RECEPTIONIST : Integer
+}
+class Employee {
+    employee_id : Integer
     name : Text
     phone_number : Integer
     email : Text
-}
-class NurseUser {
-    nurse_id : Integer
+    zip_code : Text
 }
 class SNSUser {
-    sns_number : Integer
+    name : Text
     birth_date : Date
     sex : Text
-    cc_number : Text
+    zip_code : Text
+    phone_number : Integer
+    email : Text
+    cc_number : Integer
+    sns_number : Integer
 }
-class ReceptionistUser {
-    receptionist_id : Integer
-}
-class DGSAdminUser {
-    admin_id : Integer
-}
+class DGSAdminUser {}
 class Vaccine {
     name : Text
     brand : Text
@@ -41,23 +43,18 @@ enum StatusAppointment {
     VACCINATED : Integer
     LEAVING : Integer
 }
+enum InstitutionType {
+    HEALTHCARE_CENTER : Integer
+    COMMUNITY_CENTER : Integer
+}
 class Institution {
     name : Text
+    zip_code : Text
     phone_number : Integer
+    email : Text
     website : Text
     max_vaccines_per_hour : Integer
 }
-class HealthCareCenter {
-}
-class CommunityCenter {
-}
-class Address {
-    street : Text
-    door_number : Text
-    zip_code : Text
-    city : Text
-}
-
 class AppointmentDate {
     year : Integer
     month : Integer
@@ -77,27 +74,20 @@ class Disease {
     name : Text
     start : Date
 }
-
-Person <|-- NurseUser
-Person <|---- SNSUser
-Person <|-- ReceptionistUser
-Person <|-- DGSAdminUser
-Person "1..*    " - "1    "  Address: resides in >
-Institution <|-- HealthCareCenter
-Institution <|-- CommunityCenter
-HealthCareCenter "1" --- "*" Vaccine: administers >
-CommunityCenter "1" --- "\n \n \n \n \n \n \n \n \n \n *      " Vaccine: administers >
-SNSUser "1    " --- "1  " HealthRecord: possesses >
-HealthRecord "1   " -- "*" Appointment: < has registered
-Institution "1        " --- "1 " Address: exists in >
-Institution "1" -- "1..*                 " OpeningHours: operate in >
+Employee "*" - "1" EmployeeType: has a type of >
+Employee "1" -- "*" Appointment: updates the status >
+Institution "*" -- "1" InstitutionType: has a type of >
+Institution "1" --- "* " Vaccine: administers >
+SNSUser "1  " --- "1" HealthRecord: possesses >
+HealthRecord "1   " -- "*" Appointment: has registered >
+Institution "1" -- "2" OpeningHours: operate in >
 DGSAdminUser "1" -- "1   " Disease: "\n indicates >"
-Appointment "                            *" --- "1    " SNSUser: < schedules
+Appointment "*" -- "1    " SNSUser: < schedules
 Appointment "*" -- "1" Institution: < effectuates
 Appointment "1   " -- "1" AppointmentDate: is schedule on >
 Appointment "1" -- "1  " Vaccine: < is administrated during
 Appointment "1..*   " -- "1 " StatusAppointment: is on a >
 Disease "1" -- "*" Vaccine: < treats
-Hours "2 " -- "1 " OpeningHours: "\n \n \ndescribes >"
+Hours "2" -- "1" OpeningHours: "describes >"
 
 @enduml

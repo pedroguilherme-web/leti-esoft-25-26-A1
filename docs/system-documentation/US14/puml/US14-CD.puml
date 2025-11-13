@@ -3,52 +3,48 @@
 
 title US14's Class Diagram
 
-class Person {
-    # name : String
-    # phone_number : int
-    # email : String
-    # address : Address
-    ---
-    + setName(String name) : void
-    + setPhoneNumber(String phone_number) : void
-    + setEmail(String email) : void
-}
-class NurseUser extends Person {
-    - nurse_id : int
-    ---
-    + setNurseID(int nurse_id) : void
-}
-class ReceptionistUser extends Person {
-    - receptionist_id : int
-    ---
-    + setReceptionistID(int receptionist_id) : void
-}
-class DGSAdminUser extends Person {
-    - admin_id : int
-    ---
-    + setAdminID(int admin_id) : void
-}
-class Address {
-    - street : String
-    - door_number : String
-    - zip_code : String
-    - city : String
-    ---
-    + setStreet(String street) : void
-    + setDoorNumber(String door_number) : void
-    + setZipCode(String zip_code) : void
-    + setCity(String city) : void
-}
-class NurseContainer {
-    - nurses : list<NurseUser>
-}
-class ReceptionistContainer {
-    - receptionists : list<ReceptionistUser>
+class App {
+    + getInstance() : App
 }
 
-Person "1..*" -- "1"  Address: resides in >
-NurseUser "                 *" <-- "1 " NurseContainer: < stores the information of
-ReceptionistUser "         *" <-- "1  " ReceptionistContainer: stores the information of <
+enum EmployeeType {
+    + NURSE : int
+    + RECEPTIONIST : int
+}
+class Employee {
+    - type : EmployeeType
+    - employee_id : static int
+    - name : string
+    - phone_number : int
+    - email : string
+    - zip_code : string
+    ---
+    + setType(EmployeeType type) : void
+    + setID(int id) : void
+    + setName(string name) : void
+    + setPhoneNumber(string phone_number) : void
+    + setEmail(string email) : void
+    + setZipCode(string zip_code) : void
+}
+class EmployeeContainer {
+    - employees : list<Employee>
+    ---
+    + add(Employee employee) : void
+}
+class RegisterEmployeeView {
+    + getEmployeeType()
+    + getEmployeeInfo()
+}
+class RegisterEmployeeController {
+    + registerEmployee(EmployeeType type, string name, int phone_number, string email, string zip_code) : void
+}
+
+App "1" -- "1" RegisterEmployeeView
+App "1" -- "1" RegisterEmployeeController
+App "1" -- "1" EmployeeContainer
+Employee "*" -- "1   "  EmployeeType: has a type of >
+Employee "                               *" <-- "1" EmployeeContainer: < stores the information of
+
 
 
 @enduml

@@ -2,7 +2,7 @@
 // Created by lucas on 11/11/2025.
 //
 
-#include "headers/domain/shared/NurseUser.h"
+#include "headers/domain/model/NurseUser.h"
 #include <gtest/gtest.h>
 
 using namespace std;

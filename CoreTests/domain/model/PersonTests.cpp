@@ -2,21 +2,21 @@
 // Created by lucas on 11/11/2025.
 //
 
-#include "headers/domain/shared/Person.h"
+#include "headers/domain/model/Employee.h"
 #include <gtest/gtest.h>
 
 using namespace std;
 
 class PersonTests : public ::testing::Test {
 protected:
-    Person person_set;
-    Person person_get;
+    Employee person_set;
+    Employee person_get;
     Address address;
 
     void SetUp() override {
         address = Address("Street", "Door Number", "Zip Code", "City");
-        person_get = Person("Name", 998430765, "email@email.com", address);
-        person_set = Person();
+        person_get = Employee("Name", 998430765, "email@email.com", address);
+        person_set = Employee();
     }
     void TearDown() override {}
 };

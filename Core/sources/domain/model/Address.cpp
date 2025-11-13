@@ -4,7 +4,7 @@
 
 #include <utility>
 
-#include "headers/domain/shared/Address.h"
+#include "headers/domain/model/Address.h"
 
 using namespace std;
 

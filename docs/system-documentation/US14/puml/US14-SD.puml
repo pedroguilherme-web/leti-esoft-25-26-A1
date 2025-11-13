@@ -9,56 +9,32 @@ title US14's Sequence Diagram
 actor "Administrator" as Admin
 participant ":RegisterEmployeeView" as REV
 participant ":RegisterEmployeeController" as REC
-participant "nurse :NurseUser" as NU
-participant "receptionist :ReceptionistUser" as RU
-participant ":Address" as Address
-participant ":NurseContainer" as NC
-participant ":ReceptionistContainer" as RC
+participant "employee : Employee" as EMP
+participant ":EmployeeContainer" as EC
 
 activate Admin
 
 Admin -> REV: Request an employee registration
-REV -> REV: Clarifies the type of employee
-REV -> REC: registerEmployee(type)
-alt type = nurse
-    REC -> NU: setNurseID(id)
-    NU --> REC: success
-    REC -> NU: setName(name)
-    NU --> REC: success
-    REC -> NU: setPhoneNumber(phone_number)
-    NU --> REC: success
-    REC -> NU: setEmail(email)
-    NU --> REC: success
-    REC -> Address: setStreet(street)
-    Address --> REC: success
-    REC -> Address: setDoorNumber(door_number)
-    Address --> REC: success
-    REC -> Address: setZipCode(zip_code)
-    Address --> REC: success
-    REC -> Address: setCity(city)
-    Address --> REC: success
-    REC -> NC: addNurse(nurse)
-    NC --> REC: success
-else type = receptionist
-    REC -> RU: setReceptionistID(id)
-    RU --> REC: success
-    REC -> RU: setName(name)
-    RU --> REC: success
-    REC -> RU: setPhoneNumber(phone_number)
-    RU --> REC: success
-    REC -> RU: setEmail(email)
-    RU --> REC: success
-    REC -> Address: setStreet(street)
-    Address --> REC: success
-    REC -> Address: setDoorNumber(door_number)
-    Address --> REC: success
-    REC -> Address: setZipCode(zip_code)
-    Address --> REC: success
-    REC -> Address: setCity(city)
-    Address --> REC: success
-    REC -> RC: addReceptionist(receptionist)
-    RC --> REC: success
-end
+
+REV --> Admin: Clarifies the type of employee
+Admin -> REV: Inputs the type of employee
+REV --> Admin: Shows the required input fields
+Admin -> REV: Inputs the necessary typed information
+REV -> REC: registerEmployee(type, name, phone_number, email, zip_code)
+REC -> EMP: setType(type)
+EMP --> REC: ok
+REC -> EMP: setID(employee_id++)
+EMP --> REC: ok
+REC -> EMP: setName(name)
+EMP --> REC: ok
+REC -> EMP: setPhoneNumber(phone_number)
+EMP --> REC: ok
+REC -> EMP: setEmail(email)
+EMP --> REC: ok
+REC -> EMP: setZipCode(zip_code)
+EMP --> REC: ok
+REC -> EC: add(employee)
+EC --> REC: success
 REC --> REV: success
 REV --> Admin: success
 

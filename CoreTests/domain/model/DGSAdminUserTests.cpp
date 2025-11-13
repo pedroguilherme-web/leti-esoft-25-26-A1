@@ -2,7 +2,7 @@
 // Created by lucas on 11/11/2025.
 //
 
-#include "headers/domain/shared/DGSAdminUser.h"
+#include "headers/domain/model/DGSAdminUser.h"
 #include <gtest/gtest.h>
 
 using namespace std;

@@ -12,7 +12,9 @@ participant ":System" as S
 activate A
 
 A -> S: Asks to register an employee
+S --> A: Requests the type of employee to register
+A -> S: Inputs the type of employee
 S --> A: Shows the required input fields
-A -> S: Inputs the necessary information
+A -> S: Inputs the necessary typed information
 S --> A: Confirms the employee registration
 @enduml

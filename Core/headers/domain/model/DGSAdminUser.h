@@ -4,9 +4,9 @@
 
 #ifndef DGSADMINUSER_H
 #define DGSADMINUSER_H
-#include "../shared/Person.h"
+#include "../model/Employee.h"
 
-class DGSAdminUser : public Person {
+class DGSAdminUser : public Employee {
 private:
     int admin_id;
 public:
