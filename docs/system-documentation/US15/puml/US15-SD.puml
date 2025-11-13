@@ -17,10 +17,10 @@ View -> Controller: getEmployeeList(role)
 
 alt role is 0
     Controller -> EmploRepo: getNurseList()
-    EmploRepo --> Controller: list<NurseUser>
+    EmploRepo --> Controller: list<Employee>
 else role is 1
     Controller -> EmploRepo: getReceptionistList()
-    EmploRepo --> Controller: list<ReceptionistUser>
+    EmploRepo --> Controller: list<Employee>
 end
 
 Controller --> View: Returns the list

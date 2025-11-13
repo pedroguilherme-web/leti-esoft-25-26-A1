@@ -2,8 +2,8 @@
 // Created by lucas on 11/10/25.
 //
 
-#ifndef PERSON_H
-#define PERSON_H
+#ifndef EMPLOYEE_H
+#define EMPLOYEE_H
 #include <string>
 
 #include "Address.h"
@@ -13,7 +13,6 @@ using namespace std;
 enum EmployeeType {
     NURSE = 0,
     RECEPTIONIST = 1,
-    ADMIN = 2,
 };
 
 class Employee {
@@ -42,4 +41,4 @@ public:
     void setAddress(Address address);
 };
 
-#endif //PERSON_H
+#endif //EMPLOYEE_H

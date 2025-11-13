@@ -3,6 +3,10 @@
 title US15 - Domain Model
 
 skinparam classAttributeIconSize 0
+enum EmployeeType {
+    + NURSE : Integer
+    + RECEPTIONIST : Integer
+}
 
 class Person {
   name : Text
@@ -10,16 +14,7 @@ class Person {
   email : Text
 }
 
-class NurseUser extends Person {
-  nurse_id : Integer
+class Employee extends Person {
+    employee_id : Integer
 }
-
-class ReceptionistUser extends Person{
-  receptionist_id : Integer
-}
-
-class DGSAdminUser extends Person{
-  admin_id : Integer
-}
-
 @enduml

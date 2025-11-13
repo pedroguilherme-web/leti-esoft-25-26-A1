@@ -3,10 +3,6 @@
 
 title US14's Class Diagram
 
-class App {
-    + getInstance() : App
-}
-
 enum EmployeeType {
     + NURSE : int
     + RECEPTIONIST : int
@@ -39,9 +35,8 @@ class RegisterEmployeeController {
     + registerEmployee(EmployeeType type, string name, int phone_number, string email, string zip_code) : void
 }
 
-App "1" -- "1" RegisterEmployeeView
-App "1" -- "1" RegisterEmployeeController
-App "1" -- "1" EmployeeContainer
+RegisterEmployeeView ..> RegisterEmployeeController
+RegisterEmployeeController "1" -- "1" EmployeeContainer
 Employee "*" -- "1   "  EmployeeType: has a type of >
 Employee "                               *" <-- "1" EmployeeContainer: < stores the information of
 
